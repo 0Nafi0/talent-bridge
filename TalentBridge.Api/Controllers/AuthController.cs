@@ -147,4 +147,23 @@ public class AuthController : ControllerBase
             Roles = roles
         });
     }
+
+    // POST api/auth/logout
+    [HttpPost("logout")]
+    [Authorize]
+    public async Task<IActionResult> Logout()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)
+            ?? User.FindFirstValue(System.IdentityModel.Tokens.Jwt.JwtRegisteredClaimNames.Sub);
+
+        if (userId is null) return Unauthorized();
+
+        var user = await _userManager.FindByIdAsync(userId);
+        if (user is null) return Unauthorized();
+
+        // Rotating the SecurityStamp invalidates all existing JWTs for this user
+        await _userManager.UpdateSecurityStampAsync(user);
+
+        return Ok(new { message = "Logged out successfully. Your token has been invalidated." });
+    }
 }

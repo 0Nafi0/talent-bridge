@@ -9,6 +9,7 @@ namespace TalentBridge.Api.Services;
 public interface ITokenService
 {
     string GenerateAccessToken(ApplicationUser user, IList<string> roles);
+    string? GetUserIdFromToken(string token); // used for logout validation if needed
 }
 
 public class TokenService : ITokenService
@@ -38,7 +39,8 @@ public class TokenService : ITokenService
             new(JwtRegisteredClaimNames.Email, user.Email!),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new("fullName", user.FullName),
-            new("userRole", user.Role)
+            new("userRole", user.Role),
+            new("stampId", user.SecurityStamp ?? string.Empty) // used to invalidate tokens on logout
         };
 
         // Add Identity roles as claims
@@ -54,5 +56,13 @@ public class TokenService : ITokenService
         );
 
         return new JwtSecurityTokenHandler().WriteToken(token);
+    }
+
+    public string? GetUserIdFromToken(string token)
+    {
+        var handler = new JwtSecurityTokenHandler();
+        if (!handler.CanReadToken(token)) return null;
+        var jwt = handler.ReadJwtToken(token);
+        return jwt.Subject;
     }
 }

@@ -2,7 +2,7 @@
 ### Order: Register → Login → Use token for all protected endpoints
 
 @host = http://localhost:5257
-@candidateToken = <replace-after-login>
+@candidateToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiIyNGU4ZjdiNC05ODBiLTQwODEtYjdlOC0zNTU5MWFkNDg5YmQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJaTkEyVDMzWFlPVDVWQk9aUEo2WUxJREZPNUtYN1dYNSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjM4MzcyMSwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.Y_ZWIYzvT6h39lMBE0oW48GkI812IB25Hth5EYRBR6o
 @recruiterToken = <replace-after-login>
 
 ##############################################################################
@@ -112,3 +112,14 @@ Authorization: Bearer {{recruiterToken}}
 GET {{host}}/api/auth/me
 
 ###
+
+##############################################################################
+# LOGOUT ENDPOINTS
+##############################################################################
+
+### 11. Logout (invalidates the token server-side)
+POST {{host}}/api/auth/logout
+Authorization: Bearer {{candidateToken}}
+
+###
+

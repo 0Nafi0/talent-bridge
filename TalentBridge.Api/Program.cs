@@ -48,6 +48,33 @@ builder.Services.AddAuthentication(options =>
         IssuerSigningKey         = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
         ClockSkew                = TimeSpan.Zero
     };
+
+    // Reject tokens whose SecurityStamp has been rotated (e.g. after logout)
+    options.Events = new JwtBearerEvents
+    {
+        OnTokenValidated = async ctx =>
+        {
+            var userManager = ctx.HttpContext.RequestServices
+                .GetRequiredService<UserManager<ApplicationUser>>();
+
+            var userId = ctx.Principal?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value
+                      ?? ctx.Principal?.FindFirst("sub")?.Value;
+
+            var tokenStamp = ctx.Principal?.FindFirst("stampId")?.Value;
+
+            if (userId is null || tokenStamp is null)
+            {
+                ctx.Fail("Missing claims.");
+                return;
+            }
+
+            var user = await userManager.FindByIdAsync(userId);
+            if (user is null || user.SecurityStamp != tokenStamp)
+            {
+                ctx.Fail("Token has been invalidated.");
+            }
+        }
+    };
 });
 
 // ── Authorization policies ─────────────────────────────────────────────
