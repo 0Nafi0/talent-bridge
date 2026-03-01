@@ -1,0 +1,114 @@
+### TalentBridge API — REST Client Test Suite
+### Order: Register → Login → Use token for all protected endpoints
+
+@host = http://localhost:5257
+@candidateToken = <replace-after-login>
+@recruiterToken = <replace-after-login>
+
+##############################################################################
+# AUTH ENDPOINTS
+##############################################################################
+
+### 1. Register as a Candidate
+# @name registerCandidate
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Test Candidate",
+  "email": "test.candidate@mail.com",
+  "password": "Candidate@123",
+  "role": "Candidate"
+}
+
+###
+
+### 2. Register as a Recruiter
+# @name registerRecruiter
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Test Recruiter",
+  "email": "test.recruiter@acme.com",
+  "password": "Recruiter@123",
+  "role": "Recruiter"
+}
+
+###
+
+### 3. Login as Candidate — copy AccessToken from response into candidateToken above
+# @name loginCandidate
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "candidate1@mail.com",
+  "password": "Candidate@123"
+}
+
+###
+
+### 4. Login as Recruiter — copy AccessToken into recruiterToken above
+# @name loginRecruiter
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "recruiter1@acmecorp.com",
+  "password": "Recruiter@123"
+}
+
+###
+
+### 5. Login as Admin
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@talentbridge.com",
+  "password": "Admin@123"
+}
+
+###
+
+### 6. Try login with wrong password (expect 401)
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "candidate1@mail.com",
+  "password": "WrongPassword!"
+}
+
+###
+
+### 7. Try to register with invalid role (expect 400)
+POST {{host}}/api/auth/register
+Content-Type: application/json
+
+{
+  "fullName": "Bad Actor",
+  "email": "bad@mail.com",
+  "password": "Bad@123456",
+  "role": "Admin"
+}
+
+###
+
+### 8. Get current user info (requires candidateToken)
+GET {{host}}/api/auth/me
+Authorization: Bearer {{candidateToken}}
+
+###
+
+### 9. Get current user info (requires recruiterToken)
+GET {{host}}/api/auth/me
+Authorization: Bearer {{recruiterToken}}
+
+###
+
+### 10. Access protected endpoint without token (expect 401)
+GET {{host}}/api/auth/me
+
+###
