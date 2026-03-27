@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\talent-bridge\\talent-bridge\\TalentBridge.Api\\TalentBridge.Api.csproj": {}
+    "D:\\SD 3200\\talent-bridge\\TalentBridge.Api\\TalentBridge.Api.csproj": {}
   },
   "projects": {
-    "E:\\talent-bridge\\talent-bridge\\TalentBridge.Api\\TalentBridge.Api.csproj": {
+    "D:\\SD 3200\\talent-bridge\\TalentBridge.Api\\TalentBridge.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\talent-bridge\\talent-bridge\\TalentBridge.Api\\TalentBridge.Api.csproj",
+        "projectUniqueName": "D:\\SD 3200\\talent-bridge\\TalentBridge.Api\\TalentBridge.Api.csproj",
         "projectName": "TalentBridge.Api",
-        "projectPath": "E:\\talent-bridge\\talent-bridge\\TalentBridge.Api\\TalentBridge.Api.csproj",
-        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "E:\\talent-bridge\\talent-bridge\\TalentBridge.Api\\obj\\",
+        "projectPath": "D:\\SD 3200\\talent-bridge\\TalentBridge.Api\\TalentBridge.Api.csproj",
+        "packagesPath": "C:\\Users\\mahmudul hasan fahim\\.nuget\\packages\\",
+        "outputPath": "D:\\SD 3200\\talent-bridge\\TalentBridge.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mahmudul hasan fahim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -92,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
