@@ -1,0 +1,1231 @@
+
+---------------------
+
+=== TalentBridge API — REST Client Test Suite ===
+
+
+---------------------
+
+=== Order: Register → Login → Use token for all protected endpoints ===
+
+
+---------------------
+
+=== 1. Register as a Candidate ===
+
+POST http://localhost:5257/api/auth/register
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 131
+content-type: application/json
+user-agent: httpyac
+
+{
+  "fullName": "Test Candidate",
+  "email": "test.candidate@mail.com",
+  "password": "Candidate@123",
+  "role": "Candidate"
+}
+HTTP/1.1 409  - Conflict
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:25 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "A user with this email already exists."
+}
+
+---------------------
+
+=== 2. Register as a Recruiter ===
+
+POST http://localhost:5257/api/auth/register
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 131
+content-type: application/json
+user-agent: httpyac
+
+{
+  "fullName": "Test Recruiter",
+  "email": "test.recruiter@acme.com",
+  "password": "Recruiter@123",
+  "role": "Recruiter"
+}
+HTTP/1.1 409  - Conflict
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:25 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "A user with this email already exists."
+}
+
+---------------------
+
+=== 3. Login as Candidate — copy AccessToken from response into candidateToken above ===
+
+POST http://localhost:5257/api/auth/login
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 70
+content-type: application/json
+user-agent: httpyac
+
+{
+  "email": "candidate1@mail.com",
+  "password": "Candidate@123"
+}
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJkM2U3MWM2ZS00MDM1LTQwYmQtOWRmMy05MTI4NWEyZTg0NTciLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3NDcwMDU0NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.1wvN4HK1A674bIjzb7iM1fNB8QG-rAjiRl6hX9L2RQg",
+  "tokenType": "Bearer",
+  "expiresIn": 3600,
+  "userId": "3800f544-e3db-4f8d-8884-951075badefc",
+  "email": "candidate1@mail.com",
+  "fullName": "Charlie Brown",
+  "role": "Candidate"
+}
+
+---------------------
+
+=== 4. Login as Recruiter — copy AccessToken into recruiterToken above ===
+
+POST http://localhost:5257/api/auth/login
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 74
+content-type: application/json
+user-agent: httpyac
+
+{
+  "email": "recruiter1@acmecorp.com",
+  "password": "Recruiter@123"
+}
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiNmUwZGFhOWItNDg0Yi00ZDQ3LWExOTctYjFkZTc1NGQxNjhhIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzQ3MDA1NDYsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.KIkRLyulLhWMKGzaGbjvXUjWtBocXJRwZt9loN_zePs",
+  "tokenType": "Bearer",
+  "expiresIn": 3600,
+  "userId": "8c73755e-a895-4617-ae25-b93a3b4dfc5e",
+  "email": "recruiter1@acmecorp.com",
+  "fullName": "Alice Johnson",
+  "role": "Recruiter"
+}
+
+---------------------
+
+=== 5. Login as Admin ===
+
+POST http://localhost:5257/api/auth/login
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 69
+content-type: application/json
+user-agent: httpyac
+
+{
+  "email": "admin@talentbridge.com",
+  "password": "Admin@123"
+}
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0ZjQ5ZjAyYS1lYzBiLTQzNDAtOTNmNS1hZjFmOGRiMDY3YWUiLCJlbWFpbCI6ImFkbWluQHRhbGVudGJyaWRnZS5jb20iLCJqdGkiOiJiNTQ2OWJlZS03OGRhLTQzYjAtOTk0YS1kYjgzNTI2MTYyZDgiLCJmdWxsTmFtZSI6IlRhbGVudEJyaWRnZSBBZG1pbiIsInVzZXJSb2xlIjoiQWRtaW4iLCJzdGFtcElkIjoiM1hBQ0lRN0NLR1JSSFdLWDRIM1A2T01CN0ZONE9MNEciLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc3NDcwMDU0NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.LoBX4B50N5-ubvrWOGpdo_PWggfUIs_LNcFMiZUTx-A",
+  "tokenType": "Bearer",
+  "expiresIn": 3600,
+  "userId": "4f49f02a-ec0b-4340-93f5-af1f8db067ae",
+  "email": "admin@talentbridge.com",
+  "fullName": "TalentBridge Admin",
+  "role": "Admin"
+}
+
+---------------------
+
+=== 6. Try login with wrong password (expect 401) ===
+
+POST http://localhost:5257/api/auth/login
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 71
+content-type: application/json
+user-agent: httpyac
+
+{
+  "email": "candidate1@mail.com",
+  "password": "WrongPassword!"
+}
+HTTP/1.1 401  - Unauthorized
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "Invalid email or password."
+}
+
+---------------------
+
+=== 7. Try to register with invalid role (expect 400) ===
+
+POST http://localhost:5257/api/auth/register
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 108
+content-type: application/json
+user-agent: httpyac
+
+{
+  "fullName": "Bad Actor",
+  "email": "bad@mail.com",
+  "password": "Bad@123456",
+  "role": "Admin"
+}
+HTTP/1.1 400  - Bad Request
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "Role must be 'Candidate' or 'Recruiter'."
+}
+
+---------------------
+
+=== 8. Get current user info (requires candidateToken) ===
+
+GET http://localhost:5257/api/auth/me
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJjNWI5Mjg2Ni1iOGJlLTQ4NGUtOWRjZi04N2FjZDA2NzAzYWQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjQ4MDI1NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.soAvNkMChPi4XXm9AzBweUCuWNoX3IjZVK6D4xYvuEw
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:37:36'"
+
+---------------------
+
+=== 9. Get current user info (requires recruiterToken) ===
+
+GET http://localhost:5257/api/auth/me
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== 10. Access protected endpoint without token (expect 401) ===
+
+GET http://localhost:5257/api/auth/me
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer
+
+---------------------
+
+=== 11. Logout (invalidates the token server-side) ===
+
+POST http://localhost:5257/api/auth/logout
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJjNWI5Mjg2Ni1iOGJlLTQ4NGUtOWRjZi04N2FjZDA2NzAzYWQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjQ4MDI1NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.soAvNkMChPi4XXm9AzBweUCuWNoX3IjZVK6D4xYvuEw
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:37:36'"
+
+---------------------
+
+=== 14. List all open jobs (no filter) ===
+
+GET http://localhost:5257/api/jobs
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 5,
+      "title": "Data Engineer (Python/SQL)",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 85000,
+      "salaryMax": 120000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-27T15:19:38.8315503",
+      "applicationCount": 0,
+      "requiredSkills": [
+        {
+          "id": 7,
+          "name": "Python",
+          "category": "Programming"
+        },
+        {
+          "id": 8,
+          "name": "SQL",
+          "category": "Database"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "DevOps Engineer",
+      "companyName": "TechWave",
+      "location": "San Francisco, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 110000,
+      "salaryMax": 150000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-26T15:19:38.8315454",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 11,
+          "name": "Docker",
+          "category": "DevOps"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Junior JavaScript Developer",
+      "companyName": "TechWave",
+      "location": "Remote",
+      "jobType": "Contract",
+      "status": "Open",
+      "salaryMin": 40000,
+      "salaryMax": 60000,
+      "experienceLevel": "Junior",
+      "postedAt": "2026-02-22T15:19:38.8315498",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 3,
+          "name": "JavaScript",
+          "category": "Programming"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Senior .NET Backend Developer",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 90000,
+      "salaryMax": 130000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-19T15:19:38.8313815",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 1,
+          "name": "C#",
+          "category": "Programming"
+        },
+        {
+          "id": 2,
+          "name": "ASP.NET Core",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 5,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+
+---------------------
+
+=== 15. List jobs with keyword filter ===
+
+GET http://localhost:5257/api/jobs?keyword=developer
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Junior JavaScript Developer",
+      "companyName": "TechWave",
+      "location": "Remote",
+      "jobType": "Contract",
+      "status": "Open",
+      "salaryMin": 40000,
+      "salaryMax": 60000,
+      "experienceLevel": "Junior",
+      "postedAt": "2026-02-22T15:19:38.8315498",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 3,
+          "name": "JavaScript",
+          "category": "Programming"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Senior .NET Backend Developer",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 90000,
+      "salaryMax": 130000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-19T15:19:38.8313815",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 1,
+          "name": "C#",
+          "category": "Programming"
+        },
+        {
+          "id": 2,
+          "name": "ASP.NET Core",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 3,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+
+---------------------
+
+=== 16. Filter by location ===
+
+GET http://localhost:5257/api/jobs?location=remote
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Junior JavaScript Developer",
+      "companyName": "TechWave",
+      "location": "Remote",
+      "jobType": "Contract",
+      "status": "Open",
+      "salaryMin": 40000,
+      "salaryMax": 60000,
+      "experienceLevel": "Junior",
+      "postedAt": "2026-02-22T15:19:38.8315498",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 3,
+          "name": "JavaScript",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 2,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+
+---------------------
+
+=== 17. Filter by job type ===
+
+GET http://localhost:5257/api/jobs?jobType=Remote
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    }
+  ],
+  "totalCount": 1,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+
+---------------------
+
+=== 18. Filter by salary range ===
+
+GET http://localhost:5257/api/jobs?salaryMin=80000&salaryMax=140000
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 5,
+      "title": "Data Engineer (Python/SQL)",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 85000,
+      "salaryMax": 120000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-27T15:19:38.8315503",
+      "applicationCount": 0,
+      "requiredSkills": [
+        {
+          "id": 7,
+          "name": "Python",
+          "category": "Programming"
+        },
+        {
+          "id": 8,
+          "name": "SQL",
+          "category": "Database"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "DevOps Engineer",
+      "companyName": "TechWave",
+      "location": "San Francisco, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 110000,
+      "salaryMax": 150000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-26T15:19:38.8315454",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 11,
+          "name": "Docker",
+          "category": "DevOps"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Senior .NET Backend Developer",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 90000,
+      "salaryMax": 130000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-19T15:19:38.8313815",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 1,
+          "name": "C#",
+          "category": "Programming"
+        },
+        {
+          "id": 2,
+          "name": "ASP.NET Core",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 4,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+
+---------------------
+
+=== 19. Filter by skill IDs (skill 1 = C#, skill 8 = SQL) ===
+
+GET http://localhost:5257/api/jobs?skillIds=1&skillIds=8
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Senior .NET Backend Developer",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 90000,
+      "salaryMax": 130000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-19T15:19:38.8313815",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 1,
+          "name": "C#",
+          "category": "Programming"
+        },
+        {
+          "id": 2,
+          "name": "ASP.NET Core",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 1,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+
+---------------------
+
+=== 20. Combined filter + pagination (page 1, 2 results) ===
+
+GET http://localhost:5257/api/jobs?location=usa&jobType=FullTime&page=1&pageSize=2
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 5,
+      "title": "Data Engineer (Python/SQL)",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 85000,
+      "salaryMax": 120000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-27T15:19:38.8315503",
+      "applicationCount": 0,
+      "requiredSkills": [
+        {
+          "id": 7,
+          "name": "Python",
+          "category": "Programming"
+        },
+        {
+          "id": 8,
+          "name": "SQL",
+          "category": "Database"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "DevOps Engineer",
+      "companyName": "TechWave",
+      "location": "San Francisco, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 110000,
+      "salaryMax": 150000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-26T15:19:38.8315454",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 11,
+          "name": "Docker",
+          "category": "DevOps"
+        }
+      ]
+    }
+  ],
+  "totalCount": 3,
+  "page": 1,
+  "pageSize": 2,
+  "totalPages": 2
+}
+
+---------------------
+
+=== 21. Get job details by ID ===
+
+GET http://localhost:5257/api/jobs/1
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "id": 1,
+  "title": "Senior .NET Backend Developer",
+  "description": "We are looking for a senior .NET developer to build scalable REST APIs.",
+  "companyName": "Acme Corp",
+  "companyWebsite": "https://acmecorp.com",
+  "location": "New York, USA",
+  "jobType": "FullTime",
+  "status": "Open",
+  "salaryMin": 90000,
+  "salaryMax": 130000,
+  "experienceLevel": "Senior",
+  "postedAt": "2026-02-19T15:19:38.8313815",
+  "expiresAt": "2026-03-21T15:19:38.831409",
+  "applicationCount": 1,
+  "skills": [
+    {
+      "skill": {
+        "id": 1,
+        "name": "C#",
+        "category": "Programming"
+      },
+      "isRequired": true
+    },
+    {
+      "skill": {
+        "id": 2,
+        "name": "ASP.NET Core",
+        "category": "Programming"
+      },
+      "isRequired": true
+    },
+    {
+      "skill": {
+        "id": 8,
+        "name": "SQL",
+        "category": "Database"
+      },
+      "isRequired": false
+    }
+  ]
+}
+
+---------------------
+
+=== 22. Get job that doesn't exist (expect 404) ===
+
+GET http://localhost:5257/api/jobs/9999
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 404  - Not Found
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "Job 9999 not found."
+}
+
+---------------------
+
+=== 23. Create a new job [Recruiter] ===
+
+POST http://localhost:5257/api/jobs
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+content-length: 410
+content-type: application/json
+user-agent: httpyac
+
+{
+  "title": "Full Stack Developer",
+  "description": "We are looking for a skilled Full Stack Developer to join our team. You will work on both backend APIs and frontend UIs.",
+  "location": "Remote",
+  "jobType": "FullTime",
+  "salaryMin": 75000,
+  "salaryMax": 110000,
+  "experienceLevel": "Mid",
+  "expiresAt": "2026-06-01T00:00:00Z",
+  "requiredSkillIds": [1, 3],
+  "optionalSkillIds": [5, 8]
+}
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== 24. Create a job as Candidate (expect 403) ===
+
+POST http://localhost:5257/api/jobs
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJjNWI5Mjg2Ni1iOGJlLTQ4NGUtOWRjZi04N2FjZDA2NzAzYWQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjQ4MDI1NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.soAvNkMChPi4XXm9AzBweUCuWNoX3IjZVK6D4xYvuEw
+content-length: 224
+content-type: application/json
+user-agent: httpyac
+
+{
+  "title": "Sneaky Job",
+  "description": "Should not be allowed",
+  "location": "Nowhere",
+  "jobType": "FullTime",
+  "salaryMin": 50000,
+  "salaryMax": 70000,
+  "requiredSkillIds": [],
+  "optionalSkillIds": []
+}
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:37:36'"
+
+---------------------
+
+=== 25. Update a job (change status to Closed) [Recruiter] ===
+
+PUT http://localhost:5257/api/jobs/1
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+content-length: 73
+content-type: application/json
+user-agent: httpyac
+
+{
+  "status": "Closed",
+  "salaryMin": 95000,
+  "salaryMax": 135000
+}
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== 26. Update job title and add new skills [Recruiter] ===
+
+PUT http://localhost:5257/api/jobs/2
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+content-length: 100
+content-type: application/json
+user-agent: httpyac
+
+{
+  "title": "Senior React Developer",
+  "requiredSkillIds": [5, 4],
+  "optionalSkillIds": [3]
+}
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== 27. Get applicants for job 1 [Recruiter] (sorted by match score) ===
+
+GET http://localhost:5257/api/jobs/1/applicants
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== 28. Get applicants filtered by status [Recruiter] ===
+
+GET http://localhost:5257/api/jobs/1/applicants?status=Shortlisted
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== 29. Get applicants filtered by min experience + skill [Recruiter] ===
+
+GET http://localhost:5257/api/jobs/1/applicants?minExperience=3&skillIds=1
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== 30. Get applicants for a job you don't own (expect 403) ===
+
+GET http://localhost:5257/api/jobs/3/applicants
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== 31. Delete a job [Recruiter] ===
+
+DELETE http://localhost:5257/api/jobs/6
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== Apply for Job 1 ===
+
+POST http://localhost:5257/api/applications
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJjNWI5Mjg2Ni1iOGJlLTQ4NGUtOWRjZi04N2FjZDA2NzAzYWQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjQ4MDI1NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.soAvNkMChPi4XXm9AzBweUCuWNoX3IjZVK6D4xYvuEw
+content-length: 125
+content-type: application/json
+user-agent: httpyac
+
+{
+  "jobId": 1,
+  "coverLetter": "I am very interested in this position and have 3 years of experience in .NET and SQL."
+}
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:37:36'"
+
+---------------------
+
+=== Get my applications ===
+
+GET http://localhost:5257/api/applications/my
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJjNWI5Mjg2Ni1iOGJlLTQ4NGUtOWRjZi04N2FjZDA2NzAzYWQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjQ4MDI1NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.soAvNkMChPi4XXm9AzBweUCuWNoX3IjZVK6D4xYvuEw
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:37:36'"
+
+---------------------
+
+=== Candidate view application detail ===
+
+GET http://localhost:5257/api/applications/1
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJjNWI5Mjg2Ni1iOGJlLTQ4NGUtOWRjZi04N2FjZDA2NzAzYWQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjQ4MDI1NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.soAvNkMChPi4XXm9AzBweUCuWNoX3IjZVK6D4xYvuEw
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:37:36'"
+
+---------------------
+
+=== Shortlist application ===
+
+PUT http://localhost:5257/api/applications/1/status
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+content-length: 71
+content-type: application/json
+user-agent: httpyac
+
+{
+  "status": "Shortlisted",
+  "notes": "Strong technical skills."
+}
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== Reject application ===
+
+PUT http://localhost:5257/api/applications/1/status
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+content-length: 66
+content-type: application/json
+user-agent: httpyac
+
+{
+  "status": "Rejected",
+  "notes": "Not enough experience."
+}
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+---------------------
+
+=== Get timeline (candidate) ===
+
+GET http://localhost:5257/api/applications/1/timeline
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJjNWI5Mjg2Ni1iOGJlLTQ4NGUtOWRjZi04N2FjZDA2NzAzYWQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjQ4MDI1NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.soAvNkMChPi4XXm9AzBweUCuWNoX3IjZVK6D4xYvuEw
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:37:36'"
+
+---------------------
+
+=== Get timeline (recruiter) ===
+
+GET http://localhost:5257/api/applications/1/timeline
+accept-encoding: gzip, deflate, br
+accept: */*
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:22:26 GMT
+server: Kestrel
+www-authenticate: Bearer error="invalid_token", error_description="The token expired at '03/02/2026 19:44:13'"
+
+38 requests processed (38 succeeded)

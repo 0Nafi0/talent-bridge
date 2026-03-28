@@ -1,0 +1,2131 @@
+
+---------------------
+
+=== TalentBridge API — REST Client Test Suite ===
+
+
+---------------------
+
+=== Order: Register → Login → Use token for all protected endpoints ===
+
+variable loginCandidate.response.body.accessToken not defined
+ReferenceError: loginCandidate is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:6:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async Object.action (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:77655)
+    at async o.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2872)
+variable loginRecruiter.response.body.accessToken not defined
+ReferenceError: loginRecruiter is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:7:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async Object.action (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:77655)
+    at async o.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2872)
+
+---------------------
+
+=== 1. Register as a Candidate ===
+
+POST http://localhost:5257/api/auth/register
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 131
+content-type: application/json
+user-agent: httpyac
+
+{
+  "fullName": "Test Candidate",
+  "email": "test.candidate@mail.com",
+  "password": "Candidate@123",
+  "role": "Candidate"
+}
+HTTP/1.1 409  - Conflict
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "A user with this email already exists."
+}
+variable loginCandidate.response.body.accessToken not defined
+ReferenceError: loginCandidate is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:14:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+    at async oo.beforeTrigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60406)
+variable loginRecruiter.response.body.accessToken not defined
+ReferenceError: loginRecruiter is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:14:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+    at async oo.beforeTrigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60406)
+
+---------------------
+
+=== 2. Register as a Recruiter ===
+
+POST http://localhost:5257/api/auth/register
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 131
+content-type: application/json
+user-agent: httpyac
+
+{
+  "fullName": "Test Recruiter",
+  "email": "test.recruiter@acme.com",
+  "password": "Recruiter@123",
+  "role": "Recruiter"
+}
+HTTP/1.1 409  - Conflict
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "A user with this email already exists."
+}
+variable loginCandidate.response.body.accessToken not defined
+ReferenceError: loginCandidate is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:28:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+ReferenceError: loginRecruiter is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:28:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 3. Login as Candidate — copy AccessToken from response into candidateToken above ===
+
+POST http://localhost:5257/api/auth/login
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 70
+content-type: application/json
+user-agent: httpyac
+
+{
+  "email": "candidate1@mail.com",
+  "password": "Candidate@123"
+}
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiIzNzI1MzZlNS04MjY4LTQ5YmQtOGRjNC04YjA3ZTBiMjhjZTMiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3NDcwMDYwNCwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.NpxYv2n8a-Aftjr_teD9xotkT9RAQYAToVTTcKA7DGQ",
+  "tokenType": "Bearer",
+  "expiresIn": 3600,
+  "userId": "3800f544-e3db-4f8d-8884-951075badefc",
+  "email": "candidate1@mail.com",
+  "fullName": "Charlie Brown",
+  "role": "Candidate"
+}
+variable loginCandidate.response.body.accessToken not defined
+ReferenceError: loginCandidate is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:42:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+ReferenceError: loginRecruiter is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:42:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 4. Login as Recruiter — copy AccessToken into recruiterToken above ===
+
+POST http://localhost:5257/api/auth/login
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 74
+content-type: application/json
+user-agent: httpyac
+
+{
+  "email": "recruiter1@acmecorp.com",
+  "password": "Recruiter@123"
+}
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiMmRmZTFkMTMtOGRjYi00ZTRhLTljMjMtZTA1M2Q2OWM3ZGVhIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzQ3MDA2MDQsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.yfQZTwft3oop62_Q761NplVe9aiicY1Reurjl6QPGJo",
+  "tokenType": "Bearer",
+  "expiresIn": 3600,
+  "userId": "8c73755e-a895-4617-ae25-b93a3b4dfc5e",
+  "email": "recruiter1@acmecorp.com",
+  "fullName": "Alice Johnson",
+  "role": "Recruiter"
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:54:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+ReferenceError: loginRecruiter is not defined
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:54:20)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 5. Login as Admin ===
+
+POST http://localhost:5257/api/auth/login
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 69
+content-type: application/json
+user-agent: httpyac
+
+{
+  "email": "admin@talentbridge.com",
+  "password": "Admin@123"
+}
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0ZjQ5ZjAyYS1lYzBiLTQzNDAtOTNmNS1hZjFmOGRiMDY3YWUiLCJlbWFpbCI6ImFkbWluQHRhbGVudGJyaWRnZS5jb20iLCJqdGkiOiJjODE2N2ZiNC01ZjI0LTRjNGEtYWE1OS03NDRlNzM0ZDhhN2EiLCJmdWxsTmFtZSI6IlRhbGVudEJyaWRnZSBBZG1pbiIsInVzZXJSb2xlIjoiQWRtaW4iLCJzdGFtcElkIjoiM1hBQ0lRN0NLR1JSSFdLWDRIM1A2T01CN0ZONE9MNEciLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc3NDcwMDYwNCwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.HxHOGwv5EqGoWaoqzijykGaVPEbQGlJDwOkzNuT3tIw",
+  "tokenType": "Bearer",
+  "expiresIn": 3600,
+  "userId": "4f49f02a-ec0b-4340-93f5-af1f8db067ae",
+  "email": "admin@talentbridge.com",
+  "fullName": "TalentBridge Admin",
+  "role": "Admin"
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:66:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:66:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 6. Try login with wrong password (expect 401) ===
+
+POST http://localhost:5257/api/auth/login
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 71
+content-type: application/json
+user-agent: httpyac
+
+{
+  "email": "candidate1@mail.com",
+  "password": "WrongPassword!"
+}
+HTTP/1.1 401  - Unauthorized
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "Invalid email or password."
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:77:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:77:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 7. Try to register with invalid role (expect 400) ===
+
+POST http://localhost:5257/api/auth/register
+accept-encoding: gzip, deflate, br
+accept: */*
+content-length: 108
+content-type: application/json
+user-agent: httpyac
+
+{
+  "fullName": "Bad Actor",
+  "email": "bad@mail.com",
+  "password": "Bad@123456",
+  "role": "Admin"
+}
+HTTP/1.1 400  - Bad Request
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "Role must be 'Candidate' or 'Recruiter'."
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:88:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:88:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 8. Get current user info (requires candidateToken) ===
+
+GET {{host}}/api/auth/me
+Authorization: Bearer {{candidateToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:101:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:101:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:101:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:101:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:101:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:101:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginCandidate.response.body.accessToken throws error
+
+---------------------
+
+=== 9. Get current user info (requires recruiterToken) ===
+
+GET {{host}}/api/auth/me
+Authorization: Bearer {{recruiterToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:107:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:107:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:107:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:107:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:107:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:107:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== 10. Access protected endpoint without token (expect 401) ===
+
+GET http://localhost:5257/api/auth/me
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 401  - Unauthorized
+content-length: 0
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+www-authenticate: Bearer
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:113:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:113:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 11. Logout (invalidates the token server-side) ===
+
+POST {{host}}/api/auth/logout
+Authorization: Bearer {{candidateToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:122:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:122:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:122:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:122:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:122:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:122:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginCandidate.response.body.accessToken throws error
+
+---------------------
+
+=== 14. List all open jobs (no filter) ===
+
+GET http://localhost:5257/api/jobs
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 5,
+      "title": "Data Engineer (Python/SQL)",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 85000,
+      "salaryMax": 120000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-27T15:19:38.8315503",
+      "applicationCount": 0,
+      "requiredSkills": [
+        {
+          "id": 7,
+          "name": "Python",
+          "category": "Programming"
+        },
+        {
+          "id": 8,
+          "name": "SQL",
+          "category": "Database"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "DevOps Engineer",
+      "companyName": "TechWave",
+      "location": "San Francisco, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 110000,
+      "salaryMax": 150000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-26T15:19:38.8315454",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 11,
+          "name": "Docker",
+          "category": "DevOps"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Junior JavaScript Developer",
+      "companyName": "TechWave",
+      "location": "Remote",
+      "jobType": "Contract",
+      "status": "Open",
+      "salaryMin": 40000,
+      "salaryMax": 60000,
+      "experienceLevel": "Junior",
+      "postedAt": "2026-02-22T15:19:38.8315498",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 3,
+          "name": "JavaScript",
+          "category": "Programming"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Senior .NET Backend Developer",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 90000,
+      "salaryMax": 130000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-19T15:19:38.8313815",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 1,
+          "name": "C#",
+          "category": "Programming"
+        },
+        {
+          "id": 2,
+          "name": "ASP.NET Core",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 5,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:132:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:132:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 15. List jobs with keyword filter ===
+
+GET http://localhost:5257/api/jobs?keyword=developer
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Junior JavaScript Developer",
+      "companyName": "TechWave",
+      "location": "Remote",
+      "jobType": "Contract",
+      "status": "Open",
+      "salaryMin": 40000,
+      "salaryMax": 60000,
+      "experienceLevel": "Junior",
+      "postedAt": "2026-02-22T15:19:38.8315498",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 3,
+          "name": "JavaScript",
+          "category": "Programming"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Senior .NET Backend Developer",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 90000,
+      "salaryMax": 130000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-19T15:19:38.8313815",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 1,
+          "name": "C#",
+          "category": "Programming"
+        },
+        {
+          "id": 2,
+          "name": "ASP.NET Core",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 3,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:137:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:137:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 16. Filter by location ===
+
+GET http://localhost:5257/api/jobs?location=remote
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Junior JavaScript Developer",
+      "companyName": "TechWave",
+      "location": "Remote",
+      "jobType": "Contract",
+      "status": "Open",
+      "salaryMin": 40000,
+      "salaryMax": 60000,
+      "experienceLevel": "Junior",
+      "postedAt": "2026-02-22T15:19:38.8315498",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 3,
+          "name": "JavaScript",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 2,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:142:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:142:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 17. Filter by job type ===
+
+GET http://localhost:5257/api/jobs?jobType=Remote
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    }
+  ],
+  "totalCount": 1,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:147:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:147:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 18. Filter by salary range ===
+
+GET http://localhost:5257/api/jobs?salaryMin=80000&salaryMax=140000
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 5,
+      "title": "Data Engineer (Python/SQL)",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 85000,
+      "salaryMax": 120000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-27T15:19:38.8315503",
+      "applicationCount": 0,
+      "requiredSkills": [
+        {
+          "id": 7,
+          "name": "Python",
+          "category": "Programming"
+        },
+        {
+          "id": 8,
+          "name": "SQL",
+          "category": "Database"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "DevOps Engineer",
+      "companyName": "TechWave",
+      "location": "San Francisco, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 110000,
+      "salaryMax": 150000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-26T15:19:38.8315454",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 11,
+          "name": "Docker",
+          "category": "DevOps"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "React Frontend Developer",
+      "companyName": "Acme Corp",
+      "location": "Remote",
+      "jobType": "Remote",
+      "status": "Open",
+      "salaryMin": 70000,
+      "salaryMax": 100000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-24T15:19:38.8315446",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 4,
+          "name": "TypeScript",
+          "category": "Programming"
+        },
+        {
+          "id": 5,
+          "name": "React",
+          "category": "Frontend"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Senior .NET Backend Developer",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 90000,
+      "salaryMax": 130000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-19T15:19:38.8313815",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 1,
+          "name": "C#",
+          "category": "Programming"
+        },
+        {
+          "id": 2,
+          "name": "ASP.NET Core",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 4,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:152:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:152:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 19. Filter by skill IDs (skill 1 = C#, skill 8 = SQL) ===
+
+GET http://localhost:5257/api/jobs?skillIds=1&skillIds=8
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Senior .NET Backend Developer",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 90000,
+      "salaryMax": 130000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-19T15:19:38.8313815",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 1,
+          "name": "C#",
+          "category": "Programming"
+        },
+        {
+          "id": 2,
+          "name": "ASP.NET Core",
+          "category": "Programming"
+        }
+      ]
+    }
+  ],
+  "totalCount": 1,
+  "page": 1,
+  "pageSize": 10,
+  "totalPages": 1
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:157:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:157:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 20. Combined filter + pagination (page 1, 2 results) ===
+
+GET http://localhost:5257/api/jobs?location=usa&jobType=FullTime&page=1&pageSize=2
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "items": [
+    {
+      "id": 5,
+      "title": "Data Engineer (Python/SQL)",
+      "companyName": "Acme Corp",
+      "location": "New York, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 85000,
+      "salaryMax": 120000,
+      "experienceLevel": "Mid",
+      "postedAt": "2026-02-27T15:19:38.8315503",
+      "applicationCount": 0,
+      "requiredSkills": [
+        {
+          "id": 7,
+          "name": "Python",
+          "category": "Programming"
+        },
+        {
+          "id": 8,
+          "name": "SQL",
+          "category": "Database"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "DevOps Engineer",
+      "companyName": "TechWave",
+      "location": "San Francisco, USA",
+      "jobType": "FullTime",
+      "status": "Open",
+      "salaryMin": 110000,
+      "salaryMax": 150000,
+      "experienceLevel": "Senior",
+      "postedAt": "2026-02-26T15:19:38.8315454",
+      "applicationCount": 1,
+      "requiredSkills": [
+        {
+          "id": 11,
+          "name": "Docker",
+          "category": "DevOps"
+        }
+      ]
+    }
+  ],
+  "totalCount": 3,
+  "page": 1,
+  "pageSize": 2,
+  "totalPages": 2
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:162:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:162:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 21. Get job details by ID ===
+
+GET http://localhost:5257/api/jobs/1
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 200  - OK
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "id": 1,
+  "title": "Senior .NET Backend Developer",
+  "description": "We are looking for a senior .NET developer to build scalable REST APIs.",
+  "companyName": "Acme Corp",
+  "companyWebsite": "https://acmecorp.com",
+  "location": "New York, USA",
+  "jobType": "FullTime",
+  "status": "Open",
+  "salaryMin": 90000,
+  "salaryMax": 130000,
+  "experienceLevel": "Senior",
+  "postedAt": "2026-02-19T15:19:38.8313815",
+  "expiresAt": "2026-03-21T15:19:38.831409",
+  "applicationCount": 1,
+  "skills": [
+    {
+      "skill": {
+        "id": 1,
+        "name": "C#",
+        "category": "Programming"
+      },
+      "isRequired": true
+    },
+    {
+      "skill": {
+        "id": 2,
+        "name": "ASP.NET Core",
+        "category": "Programming"
+      },
+      "isRequired": true
+    },
+    {
+      "skill": {
+        "id": 8,
+        "name": "SQL",
+        "category": "Database"
+      },
+      "isRequired": false
+    }
+  ]
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:167:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:167:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 22. Get job that doesn't exist (expect 404) ===
+
+GET http://localhost:5257/api/jobs/9999
+accept-encoding: gzip, deflate, br
+accept: */*
+user-agent: httpyac
+HTTP/1.1 404  - Not Found
+content-type: application/json; charset=utf-8
+date: Sat, 28 Mar 2026 11:23:23 GMT
+server: Kestrel
+transfer-encoding: chunked
+
+{
+  "message": "Job 9999 not found."
+}
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:172:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:172:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+
+---------------------
+
+=== 23. Create a new job [Recruiter] ===
+
+POST {{host}}/api/jobs
+Authorization: Bearer {{recruiterToken}}
+Content-Type: application/json
+
+{
+  "title": "Full Stack Developer",
+  "description": "We are looking for a skilled Full Stack Developer to join our team. You will work on both backend APIs and frontend UIs.",
+  "location": "Remote",
+  "jobType": "FullTime",
+  "salaryMin": 75000,
+  "salaryMax": 110000,
+  "experienceLevel": "Mid",
+  "expiresAt": "2026-06-01T00:00:00Z",
+  "requiredSkillIds": [1, 3],
+  "optionalSkillIds": [5, 8]
+}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:177:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:177:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:177:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:177:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:177:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:177:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== 24. Create a job as Candidate (expect 403) ===
+
+POST {{host}}/api/jobs
+Authorization: Bearer {{candidateToken}}
+Content-Type: application/json
+
+{
+  "title": "Sneaky Job",
+  "description": "Should not be allowed",
+  "location": "Nowhere",
+  "jobType": "FullTime",
+  "salaryMin": 50000,
+  "salaryMax": 70000,
+  "requiredSkillIds": [],
+  "optionalSkillIds": []
+}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:198:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:198:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:198:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:198:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:198:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:198:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginCandidate.response.body.accessToken throws error
+
+---------------------
+
+=== 25. Update a job (change status to Closed) [Recruiter] ===
+
+PUT {{host}}/api/jobs/1
+Authorization: Bearer {{recruiterToken}}
+Content-Type: application/json
+
+{
+  "status": "Closed",
+  "salaryMin": 95000,
+  "salaryMax": 135000
+}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:216:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:216:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:216:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:216:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:216:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:216:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== 26. Update job title and add new skills [Recruiter] ===
+
+PUT {{host}}/api/jobs/2
+Authorization: Bearer {{recruiterToken}}
+Content-Type: application/json
+
+{
+  "title": "Senior React Developer",
+  "requiredSkillIds": [5, 4],
+  "optionalSkillIds": [3]
+}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:229:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:229:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:229:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:229:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:229:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:229:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== 27. Get applicants for job 1 [Recruiter] (sorted by match score) ===
+
+GET {{host}}/api/jobs/1/applicants
+Authorization: Bearer {{recruiterToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:242:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:242:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:242:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:242:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:242:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:242:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== 28. Get applicants filtered by status [Recruiter] ===
+
+GET {{host}}/api/jobs/1/applicants?status=Shortlisted
+Authorization: Bearer {{recruiterToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:248:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:248:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:248:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:248:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:248:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:248:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== 29. Get applicants filtered by min experience + skill [Recruiter] ===
+
+GET {{host}}/api/jobs/1/applicants?minExperience=3&skillIds=1
+Authorization: Bearer {{recruiterToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:254:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:254:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:254:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:254:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:254:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:254:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== 30. Get applicants for a job you don't own (expect 403) ===
+
+GET {{host}}/api/jobs/3/applicants
+Authorization: Bearer {{recruiterToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:260:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:260:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:260:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:260:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:260:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:260:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== 31. Delete a job [Recruiter] ===
+
+DELETE {{host}}/api/jobs/6
+Authorization: Bearer {{recruiterToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:266:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:266:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:266:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:266:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:266:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:266:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== Apply for Job 1 ===
+
+POST {{host}}/api/applications
+Authorization: Bearer {{candidateToken}}
+Content-Type: application/json
+
+{
+  "jobId": 1,
+  "coverLetter": "I am very interested in this position and have 3 years of experience in .NET and SQL."
+}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:274:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:274:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:274:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:274:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:274:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:274:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginCandidate.response.body.accessToken throws error
+
+---------------------
+
+=== Get my applications ===
+
+GET {{host}}/api/applications/my
+Authorization: Bearer {{candidateToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:286:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:286:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:286:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:286:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:286:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:286:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginCandidate.response.body.accessToken throws error
+
+---------------------
+
+=== Candidate view application detail ===
+
+GET {{host}}/api/applications/1
+Authorization: Bearer {{candidateToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:291:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:291:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:291:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:291:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:291:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:291:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginCandidate.response.body.accessToken throws error
+
+---------------------
+
+=== Shortlist application ===
+
+PUT {{host}}/api/applications/1/status
+Authorization: Bearer {{recruiterToken}}
+Content-Type: application/json
+
+{
+  "status": "Shortlisted",
+  "notes": "Strong technical skills."
+}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:296:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:296:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:296:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:296:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:296:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:296:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== Reject application ===
+
+PUT {{host}}/api/applications/1/status
+Authorization: Bearer {{recruiterToken}}
+Content-Type: application/json
+
+{
+  "status": "Rejected",
+  "notes": "Not enough experience."
+}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:307:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:307:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:307:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:307:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:307:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:307:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+---------------------
+
+=== Get timeline (candidate) ===
+
+GET {{host}}/api/applications/1/timeline
+Authorization: Bearer {{candidateToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:318:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:318:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:318:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:318:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:318:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:318:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginCandidate.response.body.accessToken throws error
+
+---------------------
+
+=== Get timeline (recruiter) ===
+
+GET {{host}}/api/applications/1/timeline
+Authorization: Bearer {{recruiterToken}}
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:323:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:323:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+[-] Cannot read properties of undefined (reading 'body') (TypeError: Cannot read properties of undefined (reading 'body') - Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:323:44)
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:323:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+variable loginCandidate.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:323:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+variable loginRecruiter.response.body.accessToken not defined
+TypeError: Cannot read properties of undefined (reading 'body')
+    at Object.userJS (E:\Software Development\talent-bridge\TalentBridge.Api\TalentBridge.Api.http:323:44)
+    at cr (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:2730)
+    at Fo (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:3324)
+    at C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6598
+    at K (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:37424)
+    at Object.Xd [as action] (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:119:6564)
+    at Nt.trigger (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\hookpoint\dist\index.js:1:2889)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async M (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:19943)
+    at async oo.replaceAllVariables (C:\Users\nafiz\AppData\Local\npm-cache\_npx\e79975a7f7006ecf\node_modules\httpyac\dist\index.js:2:60554)
+expression loginRecruiter.response.body.accessToken throws error
+
+38 requests processed (19 succeeded, 19 errored)

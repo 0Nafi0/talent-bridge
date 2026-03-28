@@ -2,8 +2,8 @@
 ### Order: Register → Login → Use token for all protected endpoints
 
 @host = http://localhost:5257
-@candidateToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiJjNWI5Mjg2Ni1iOGJlLTQ4NGUtOWRjZi04N2FjZDA2NzAzYWQiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3MjQ4MDI1NiwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.soAvNkMChPi4XXm9AzBweUCuWNoX3IjZVK6D4xYvuEw
-@recruiterToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiYjY2NWY3NzctOWE5NC00YjBlLTg0YzEtNTE3YTA3NWY1NjFiIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzI0ODA2NTMsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.J6D8-2KowQpm-fH6NLkbfaUbxxPLpleu7PeHHqddA3s
+@candidateToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiI5YzhlZmM2Yy00YWZiLTRkNTUtYTMyZS04NWVhMjQzNDJmNDMiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3NDcwNDA0MSwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.rd6OMUVUOEUenJzACRH1T47aSPcKcnF_HsHLic9m1Z0
+@recruiterToken = {{loginRecruiter.response.body.accessToken}}
 
 ##############################################################################
 # AUTH ENDPOINTS
@@ -114,11 +114,55 @@ GET {{host}}/api/auth/me
 ###
 
 ##############################################################################
-# LOGOUT ENDPOINTS
+# PROFILE ENDPOINTS
 ##############################################################################
 
-### 11. Logout (invalidates the token server-side)
-POST {{host}}/api/auth/logout
+### Get my candidate profile
+GET {{host}}/api/profile/candidate
+Authorization: Bearer {{candidateToken}}
+
+###
+
+### Update my candidate profile
+PUT {{host}}/api/profile/candidate
+Authorization: Bearer {{candidateToken}}
+Content-Type: application/json
+
+{
+  "headline": "Enthusiastic ASP.NET Dev",
+  "bio": "I write clean and scalable code.",
+  "location": "Seattle, USA",
+  "yearsOfExperience": 4
+}
+
+###
+
+### Add a skill to my profile
+POST {{host}}/api/profile/candidate/skills
+Authorization: Bearer {{candidateToken}}
+Content-Type: application/json
+
+{
+  "skillId": 1,
+  "yearsOfExperience": 3
+}
+
+###
+
+### Add another skill
+POST {{host}}/api/profile/candidate/skills
+Authorization: Bearer {{candidateToken}}
+Content-Type: application/json
+
+{
+  "skillId": 2,
+  "yearsOfExperience": 2
+}
+
+###
+
+### Remove a skill
+DELETE {{host}}/api/profile/candidate/skills/2
 Authorization: Bearer {{candidateToken}}
 
 ###
@@ -321,4 +365,14 @@ Authorization: Bearer {{candidateToken}}
 ### Get timeline (recruiter)
 GET {{host}}/api/applications/1/timeline
 Authorization: Bearer {{recruiterToken}}
+###
+
+##############################################################################
+# LOGOUT ENDPOINTS
+##############################################################################
+
+### 11. Logout (invalidates the token server-side)
+POST {{host}}/api/auth/logout
+Authorization: Bearer {{candidateToken}}
+
 ###
