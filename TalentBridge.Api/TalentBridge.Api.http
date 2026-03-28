@@ -368,6 +368,47 @@ Authorization: Bearer {{recruiterToken}}
 ###
 
 ##############################################################################
+# RECRUITER DASHBOARD ENDPOINTS
+##############################################################################
+
+### Get my job postings
+GET {{host}}/api/dashboard/jobs
+Authorization: Bearer {{recruiterToken}}
+
+###
+
+### Get all applicants across my jobs
+GET {{host}}/api/dashboard/applicants
+Authorization: Bearer {{recruiterToken}}
+
+###
+
+### Get all applicants across my jobs (filtered by MinExperience)
+GET {{host}}/api/dashboard/applicants?MinExperience=2
+Authorization: Bearer {{recruiterToken}}
+
+###
+
+### Get my recruiter profile
+GET {{host}}/api/dashboard/profile
+Authorization: Bearer {{recruiterToken}}
+
+###
+
+### Update my recruiter profile
+PUT {{host}}/api/dashboard/profile
+Authorization: Bearer {{recruiterToken}}
+Content-Type: application/json
+
+{
+  "companyName": "TechWave Inc.",
+  "location": "San Francisco, CA",
+  "companyWebsite": "https://techwave.inc"
+}
+
+###
+
+##############################################################################
 # LOGOUT ENDPOINTS
 ##############################################################################
 
