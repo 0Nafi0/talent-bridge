@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TalentBridge.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e3189f3c24c4078c565a0e9e598805b719647b73")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c979bed060ce4a0867d051a43923620a5dd248f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("TalentBridge.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TalentBridge.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

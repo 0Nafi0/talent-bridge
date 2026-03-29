@@ -2,8 +2,8 @@
 ### Order: Register → Login → Use token for all protected endpoints
 
 @host = http://localhost:5257
-@candidateToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiI5YzhlZmM2Yy00YWZiLTRkNTUtYTMyZS04NWVhMjQzNDJmNDMiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3NDcwNDA0MSwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.rd6OMUVUOEUenJzACRH1T47aSPcKcnF_HsHLic9m1Z0
-@recruiterToken = {{loginRecruiter.response.body.accessToken}}
+@candidateToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzODAwZjU0NC1lM2RiLTRmOGQtODg4NC05NTEwNzViYWRlZmMiLCJlbWFpbCI6ImNhbmRpZGF0ZTFAbWFpbC5jb20iLCJqdGkiOiIwMjI2Y2Q2Ni0zOWNkLTRjYzEtODg5NC1lMmQzZTRiMTFmMTAiLCJmdWxsTmFtZSI6IkNoYXJsaWUgQnJvd24iLCJ1c2VyUm9sZSI6IkNhbmRpZGF0ZSIsInN0YW1wSWQiOiJYVE5MV0E0UVRPV0Q1SVJRWUM0S0pZN0pNVjc3WjVHVCIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkNhbmRpZGF0ZSIsImV4cCI6MTc3NDcwNzA4OCwiaXNzIjoiVGFsZW50QnJpZGdlQXBpIiwiYXVkIjoiVGFsZW50QnJpZGdlQ2xpZW50In0.tt-C1lGSuvvOAryKy6mlGMf2eU1WqUClUR9scjlJ8G4
+@recruiterToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzczNzU1ZS1hODk1LTQ2MTctYWUyNS1iOTNhM2I0ZGZjNWUiLCJlbWFpbCI6InJlY3J1aXRlcjFAYWNtZWNvcnAuY29tIiwianRpIjoiMjU2MjhmNjMtYmVkMi00MTU2LWI0NzItZTFkOGQzMWUzZTkxIiwiZnVsbE5hbWUiOiJBbGljZSBKb2huc29uIiwidXNlclJvbGUiOiJSZWNydWl0ZXIiLCJzdGFtcElkIjoiTEVJVUFJQ0VHWEhPTk1OVFpVTlJONE1TRFI1TzJLUloiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJSZWNydWl0ZXIiLCJleHAiOjE3NzQ3MDYzNDAsImlzcyI6IlRhbGVudEJyaWRnZUFwaSIsImF1ZCI6IlRhbGVudEJyaWRnZUNsaWVudCJ9.U9MbCsAt6q6Pt71mnt8nhwoqhGqBRvSPQv0vaMuQG-M
 
 ##############################################################################
 # AUTH ENDPOINTS
@@ -405,6 +405,42 @@ Content-Type: application/json
   "location": "San Francisco, CA",
   "companyWebsite": "https://techwave.inc"
 }
+
+###
+
+##############################################################################
+# NOTIFICATIONS ENDPOINTS
+##############################################################################
+
+### Get my notifications (try as Candidate or Recruiter)
+GET {{host}}/api/notifications
+Authorization: Bearer {{candidateToken}}
+
+###
+
+### Mark notification as read (change ID if needed)
+PUT {{host}}/api/notifications/1/read
+Authorization: Bearer {{candidateToken}}
+
+###
+
+### Mark all as read
+PUT {{host}}/api/notifications/read-all
+Authorization: Bearer {{candidateToken}}
+
+###
+
+##############################################################################
+# SKILLS ENDPOINTS
+##############################################################################
+
+### Get all skills
+GET {{host}}/api/skills
+
+###
+
+### Get skills by category
+GET {{host}}/api/skills?category=Programming
 
 ###
 
