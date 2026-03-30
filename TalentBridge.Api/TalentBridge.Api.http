@@ -445,6 +445,41 @@ GET {{host}}/api/skills?category=Programming
 ###
 
 ##############################################################################
+# ANALYTICS ENDPOINTS
+##############################################################################
+
+### Get Platform Overview (Admin)
+# @name loginAdmin
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@talentbridge.com",
+  "password": "Admin@123"
+}
+
+###
+
+@adminToken = {{loginAdmin.response.body.accessToken}}
+
+GET {{host}}/api/analytics/overview
+Authorization: Bearer {{adminToken}}
+
+###
+
+### Get Recruiter's Aggregate Analytics
+GET {{host}}/api/analytics/recruiter
+Authorization: Bearer {{recruiterToken}}
+
+###
+
+### Get Specific Job Analytics (Replace 1 with your Job ID)
+GET {{host}}/api/analytics/jobs/1
+Authorization: Bearer {{recruiterToken}}
+
+###
+
+##############################################################################
 # LOGOUT ENDPOINTS
 ##############################################################################
 
