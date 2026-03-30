@@ -135,15 +135,13 @@ using (var scope = app.Services.CreateScope())
 }
 
 // ── Middleware pipeline ────────────────────────────────────────────────
-if (app.Environment.IsDevelopment())
+// Always enable Swagger (Great for portfolios & public testing)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "TalentBridge API v1");
-        c.RoutePrefix = "swagger";
-    });
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TalentBridge API v1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
