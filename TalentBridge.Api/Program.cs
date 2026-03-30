@@ -88,6 +88,18 @@ builder.Services.AddAuthorization(options =>
 // ── Application services ───────────────────────────────────────────────
 builder.Services.AddScoped<ITokenService, TokenService>();
 
+// ── CORS ───────────────────────────────────────────────────────────────
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.SetIsOriginAllowed(origin => true) // Allow any origin dynamically (great for Vercel/Render frontend deploys)
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
 // ── Controllers ────────────────────────────────────────────────────────
 builder.Services.AddControllers();
 
@@ -143,6 +155,7 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = "swagger";
 });
 
+app.UseCors("AllowFrontend");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
