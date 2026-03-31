@@ -6,7 +6,7 @@
 
 ## 🚀 Live Demo
 - **Backend API**: [https://talent-bridge-qmxz.onrender.com/swagger](https://talent-bridge-qmxz.onrender.com/swagger)
-- **Frontend UI**: [Coming soon to Vercel]
+- **Frontend UI**: [https://talent-bridge-psi.vercel.app]
 
 ---
 
